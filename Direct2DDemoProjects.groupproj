@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{33F55A48-6AA1-4170-AD1D-03D21833AA9E}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Direct2DDemoRunTime.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Direct2DDemoDesign.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Direct2DDemo.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Direct2DDemoRunTime">
+        <MSBuild Projects="Direct2DDemoRunTime.dproj"/>
+    </Target>
+    <Target Name="Direct2DDemoRunTime:Clean">
+        <MSBuild Projects="Direct2DDemoRunTime.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Direct2DDemoRunTime:Make">
+        <MSBuild Projects="Direct2DDemoRunTime.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Direct2DDemoDesign">
+        <MSBuild Projects="Direct2DDemoDesign.dproj"/>
+    </Target>
+    <Target Name="Direct2DDemoDesign:Clean">
+        <MSBuild Projects="Direct2DDemoDesign.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Direct2DDemoDesign:Make">
+        <MSBuild Projects="Direct2DDemoDesign.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Direct2DDemo">
+        <MSBuild Projects="Direct2DDemo.dproj"/>
+    </Target>
+    <Target Name="Direct2DDemo:Clean">
+        <MSBuild Projects="Direct2DDemo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Direct2DDemo:Make">
+        <MSBuild Projects="Direct2DDemo.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Direct2DDemoRunTime;Direct2DDemoDesign;Direct2DDemo"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Direct2DDemoRunTime:Clean;Direct2DDemoDesign:Clean;Direct2DDemo:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Direct2DDemoRunTime:Make;Direct2DDemoDesign:Make;Direct2DDemo:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
